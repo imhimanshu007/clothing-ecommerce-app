@@ -1,17 +1,46 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener,
 } from "../utils/firebase/firebase.utils";
 
+import { createAction } from "../utils/reducers/reducers.utils";
+
 //Actual Value we want to access
 export const UserContext = createContext({
-  setCurrentUser: () => null,
   currentUser: null,
+  setCurrentUser: () => null,
 });
 
+const INITIAL_STATES = {
+  currentUser: null,
+};
+
+export const USER_ACTION_TYPES = {
+  SET_CURRENT_USER: "SET_CURRENT_USER",
+};
+
+const userReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case USER_ACTION_TYPES.SET_CURRENT_USER:
+      return {
+        ...state,
+        currentUser: payload,
+      };
+    default:
+      throw new Error(`Unhandled type of clear${type} in userReducer`);
+  }
+};
+
 export const UserProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [state, dispatch] = useReducer(userReducer, INITIAL_STATES);
+  const { currentUser } = state;
+
+  const setCurrentUser = (user) => {
+    dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user));
+  };
+
   const value = { currentUser, setCurrentUser };
 
   //signOutUser();

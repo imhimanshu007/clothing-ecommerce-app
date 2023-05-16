@@ -7,20 +7,19 @@ export const CartItemContainer = styled.div`
   margin-bottom: 15px;
 
   img {
-    width: 30%;
+    width: 35%;
   }
 `;
 
 export const ItemDetails = styled.div`
-  .item-details {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 10px 20px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px 20px;
 
-    .span {
-      font-size: 16px;
-    }
+  span {
+    font-size: 16px;
+  }
 `;
