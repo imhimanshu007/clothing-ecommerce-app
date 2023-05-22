@@ -4,7 +4,6 @@ import {
   Preview,
 } from "./category-preview.styles.jsx";
 import ProductCard from "../product-card/product-card.component";
-import { Link } from "react-router-dom";
 
 const CategoryPreview = ({ title, products }) => {
   return (
@@ -16,7 +15,7 @@ const CategoryPreview = ({ title, products }) => {
         {products
           .filter((_, idx) => idx < 4)
           .map((product) => (
-            <ProductCard key={products.id} product={product} />
+            <ProductCard key={product.id} product={product}></ProductCard>
           ))}
       </Preview>
     </CategoryPreviewContainer>
