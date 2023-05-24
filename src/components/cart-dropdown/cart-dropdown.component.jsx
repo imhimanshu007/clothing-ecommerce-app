@@ -12,7 +12,7 @@ import {
   selectIsCartOpen,
 } from "../../store/cart/cart.selector.js";
 
-import { setIsCartOpen } from "../../store/cart/cart.action.js";
+import { setIsCartOpen } from "../../store/cart/cart.reducer";
 
 const CartDropDown = () => {
   const dispatch = useDispatch();

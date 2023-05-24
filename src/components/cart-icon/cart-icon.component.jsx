@@ -8,7 +8,7 @@ import {
   selectIsCartOpen,
   selectCartCount,
 } from "../../store/cart/cart.selector.js";
-import { setIsCartOpen } from "../../store/cart/cart.action.js";
+import { setIsCartOpen } from "../../store/cart/cart.reducer.js";
 
 const CartIcon = () => {
   const dispatch = useDispatch();
